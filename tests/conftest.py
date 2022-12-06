@@ -5,4 +5,4 @@ import pytest
 
 @pytest.fixture
 def inputs_dir():
-    return Path(__file__).parents[1].joinpath( "inputs")
+    return Path(__file__).parents[1].joinpath("inputs")

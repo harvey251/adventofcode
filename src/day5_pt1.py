@@ -18,6 +18,7 @@ def main(file_path: Path):
 
     return results
 
+
 def make_move(instruction, table: list[LifoQueue]):
     number_of_crates, row, new_row = instruction
     for _ in range(number_of_crates):
@@ -28,7 +29,10 @@ def make_move(instruction, table: list[LifoQueue]):
 def convert_instruction_str_to_int(instruction_strs):
     instruction_tuple = []
     for instruction in instruction_strs:
-        instruction_tuple.append(int(i) for i in re.findall(r'^move (\d+) from (\d+) to (\d+)$', instruction)[0])
+        instruction_tuple.append(
+            int(i)
+            for i in re.findall(r"^move (\d+) from (\d+) to (\d+)$", instruction)[0]
+        )
     return instruction_tuple
 
 
@@ -52,7 +56,7 @@ def convert_table_to_array(table: list) -> list[LifoQueue]:
     array = [LifoQueue() for _ in range(number_of_rows)]
 
     for row in reversed(table[:-1]):
-        row_elements = re.findall("(?:\s{3}|\[(\w)\])\s?", row)
+        row_elements = re.findall(r"(?:\s{3}|\[(\w)\])\s?", row)
         for idx, element in enumerate(row_elements, 0):
             if element:
                 array[idx].put(element)
@@ -65,6 +69,6 @@ def read_lines(file_path: Path):
             yield line.strip("\n")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     answer = main(Path(__file__).parent.joinpath("day5_input.txt"))
     print(answer)

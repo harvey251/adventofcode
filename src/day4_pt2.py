@@ -16,7 +16,9 @@ def main(file_path: Path):
         elf_1_start, _, elf_1_end = elf_1_string.partition("-")
         elf_2_start, _, elf_2_end = elf_2_string.partition("-")
 
-        pairs_assigned += overlap(int(elf_1_start), int(elf_1_end), int(elf_2_start), int(elf_2_end))
+        pairs_assigned += overlap(
+            int(elf_1_start), int(elf_1_end), int(elf_2_start), int(elf_2_end)
+        )
 
     return pairs_assigned
 
@@ -27,6 +29,6 @@ def read_lines(file_path: Path):
             yield line.strip()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     answer = main(Path(__file__).parent.joinpath("day4_input.txt"))
     print(answer)

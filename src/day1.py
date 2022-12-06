@@ -25,5 +25,5 @@ with Path(__file__).parent.joinpath("day1_input.txt").open("r") as f:
 
 print(elf, elf_total)
 
-total = sum(i for i,_ in sorted(elves)[-3:])
+total = sum(i for i, _ in sorted(elves)[-3:])
 print(total)

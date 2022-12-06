@@ -5,6 +5,7 @@ from queue import LifoQueue
 
 class CrateMover9000:
     """Can only move one bos at a time"""
+
     @staticmethod
     def make_move(instruction, table: list[LifoQueue]):
         number_of_crates, row, new_row = instruction
@@ -12,8 +13,10 @@ class CrateMover9000:
             table[new_row - 1].put(table[row - 1].get())
         return table
 
+
 class CrateMover9001:
     """Can move multiple at a time"""
+
     @staticmethod
     def make_move(instruction, table: list[LifoQueue]):
         number_of_crates, row, new_row = instruction
@@ -24,6 +27,7 @@ class CrateMover9001:
         for item in reversed(items):
             table[new_row - 1].put(item)
         return table
+
 
 def main(file_path: Path, crate_mover):
     table_rows, instruction_strs = convert_to_table_and_instructions(file_path)
@@ -42,7 +46,7 @@ def main(file_path: Path, crate_mover):
 
 
 def convert_instruction_str_to_int(instruction_strs):
-    p = re.compile(r'^move (\d+) from (\d+) to (\d+)$')
+    p = re.compile(r"^move (\d+) from (\d+) to (\d+)$")
     for instruction in instruction_strs:
         yield (int(i) for i in p.findall(instruction)[0])
 
@@ -73,10 +77,9 @@ def convert_table_to_array(table: list) -> list[LifoQueue]:
 
 def read_lines(file_path: Path):
     with file_path.open("r") as f:
-        for line in f.readlines():
-            yield line
+        yield from f.readlines()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     answer = main(Path(__file__).parent.joinpath("day5_input.txt"), CrateMover9001)
     print(answer)

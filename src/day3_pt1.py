@@ -11,9 +11,11 @@ elves = []
 d = set()
 d.intersection()
 
+
 class StringSet(str):
     def intersection(self, other):
         return set(self).intersection(set(other))
+
 
 with Path(__file__).parent.joinpath("day3_input.txt").open("r") as f:
     priority_total = 0
