@@ -1,3 +1,4 @@
+# pylint: skip-file
 from queue import LifoQueue
 
 from src.day5_pt2 import (
@@ -8,10 +9,6 @@ from src.day5_pt2 import (
     convert_to_table_and_instructions,
     main,
 )
-
-# pylint: disable=missing-module-docstring
-# pylint: disable=missing-class-docstring
-# pylint: disable=missing-function-docstring
 
 
 def test_convert_to_table_and_instructions(inputs_dir):

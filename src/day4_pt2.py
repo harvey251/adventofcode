@@ -1,3 +1,5 @@
+# pylint: skip-file
+
 from pathlib import Path
 
 

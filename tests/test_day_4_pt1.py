@@ -1,10 +1,7 @@
+# pylint: skip-file
 import pytest
 
 from src.day4_pt1 import contained, main
-
-# pylint: disable=missing-module-docstring
-# pylint: disable=missing-class-docstring
-# pylint: disable=missing-function-docstring
 
 
 @pytest.mark.parametrize(

@@ -1,3 +1,4 @@
+# pylint: skip-file
 import re
 from pathlib import Path
 from queue import LifoQueue
@@ -53,7 +54,7 @@ def convert_to_table_and_instructions(file_path):
 def convert_table_to_array(table: list) -> list[LifoQueue]:
     index_row = table[-1]
     number_of_rows = int(re.findall(r"(\d+)\s?$", index_row)[-1])
-    array = [LifoQueue() for _ in range(number_of_rows)]
+    array: list[LifoQueue] = [LifoQueue() for _ in range(number_of_rows)]
 
     for row in reversed(table[:-1]):
         row_elements = re.findall(r"(?:\s{3}|\[(\w)\])\s?", row)
