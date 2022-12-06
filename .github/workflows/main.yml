@@ -41,9 +41,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Mypy
         run: |
-          pip install -r tests/requirements.txt
+          pip install -r requirements.txt
           pip install mypy
-          pip install types-requests
           mypy src
   test:
     runs-on: ubuntu-latest
@@ -54,5 +53,5 @@ jobs:
         - uses: actions/checkout@v2
         - name: Pytest 3.11
           run: |
-            pip install -r requirements.in
+            pip install -r requirements.txt
             pytest .

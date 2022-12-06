@@ -1,3 +1,4 @@
+# pylint: skip-file
 import string
 from pathlib import Path
 
@@ -5,11 +6,6 @@ elf = 1
 elf_total = 0
 t_elf = 1
 t_total = 0
-
-elves = []
-
-d = set()
-d.intersection()
 
 
 class StringSet(str):

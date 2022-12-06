@@ -1,3 +1,4 @@
+# pylint: skip-file
 from enum import IntEnum
 from pathlib import Path
 
@@ -53,9 +54,9 @@ WIN = "Z"
 total = 0
 with Path(__file__).parent.joinpath("day2_input.txt").open("r") as f:
     for line in f.readlines():
-        opponent, _, response = line.partition(" ")
+        opponent_str, _, response = line.partition(" ")
 
-        opponent = Moves(mapping[opponent])
+        opponent = Moves(mapping[opponent_str])
         response = response.strip()
 
         if response == WIN:

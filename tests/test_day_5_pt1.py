@@ -1,4 +1,5 @@
-from pathlib import Path
+# pylint: skip-file
+
 from queue import LifoQueue
 
 from src.day5_pt1 import (
@@ -9,15 +10,11 @@ from src.day5_pt1 import (
     make_move,
 )
 
-# pylint: disable=missing-module-docstring
-# pylint: disable=missing-class-docstring
-# pylint: disable=missing-function-docstring
-
 
 def test_convert_to_table_and_instructions(inputs_dir):
     file_path = inputs_dir.joinpath("day5_input_example.txt")
     table, instructions = convert_to_table_and_instructions(file_path)
-    assert table == ["    [D]    ", "[N] [C]    ", "[Z] [M] [P]", " 1   2   3 "]
+    assert table == ["    [D]", "[N] [C]", "[Z] [M] [P]", " 1   2   3"]
     assert instructions == [
         "move 1 from 2 to 1",
         "move 3 from 1 to 3",
@@ -27,20 +24,20 @@ def test_convert_to_table_and_instructions(inputs_dir):
 
 
 def test_convert_table_to_array():
-    table_input = ["    [D]    ", "[N] [C]    ", "[Z] [M] [P]", " 1   2   3 "]
+    table_input = ("    [D]    ", "[N] [C]    ", "[Z] [M] [P]", " 1   2   3 ")
     table = convert_table_to_array(table_input)
 
     assert [list(r.queue) for r in table] == [["Z", "N"], ["M", "C", "D"], ["P"]]
 
 
 def test_convert_instruction_str_to_int():
-    instruction_strs = [
+    instruction_strs = (
         "move 1 from 2 to 1",
         "move 3 from 1 to 3",
         "move 2 from 2 to 1",
         "move 1 from 1 to 2",
         "move 13 from 7 to 8",
-    ]
+    )
     instructions = convert_instruction_str_to_int(instruction_strs)
 
     assert [list(i) for i in instructions] == [
@@ -53,7 +50,7 @@ def test_convert_instruction_str_to_int():
 
 
 def test_make_move_example_1():
-    instruction = [1, 2, 1]
+    instruction = (1, 2, 1)
     table = []
     for idx, row in enumerate((["Z", "N"], ["M", "C", "D"], ["P"]), 0):
         table.append(LifoQueue())
@@ -66,7 +63,7 @@ def test_make_move_example_1():
 
 
 def test_make_move_example_2():
-    instruction = [2, 2, 1]
+    instruction = (2, 2, 1)
     table = []
     for idx, row in enumerate(
         [
@@ -103,7 +100,7 @@ def test_make_move_example_2():
 
 
 def test_make_move_example_3():
-    instruction = [1, 1, 2]
+    instruction = (1, 1, 2)
     table = []
     for idx, row in enumerate(
         [

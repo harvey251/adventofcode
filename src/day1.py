@@ -1,3 +1,4 @@
+# pylint: skip-file
 from pathlib import Path
 
 elf = 1
@@ -9,9 +10,9 @@ elves = []
 
 with Path(__file__).parent.joinpath("day1_input.txt").open("r") as f:
     for line in f.readlines():
-        total = line.strip()
-        if total and total.isdigit():
-            t_total += int(total)
+        total_str = line.strip()
+        if total_str and total_str.isdigit():
+            t_total += int(total_str)
             continue
 
         if t_total > elf_total:

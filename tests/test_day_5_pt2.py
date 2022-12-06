@@ -1,3 +1,4 @@
+# pylint: skip-file
 from queue import LifoQueue
 
 from src.day5_pt2 import (
@@ -9,15 +10,11 @@ from src.day5_pt2 import (
     main,
 )
 
-# pylint: disable=missing-module-docstring
-# pylint: disable=missing-class-docstring
-# pylint: disable=missing-function-docstring
-
 
 def test_convert_to_table_and_instructions(inputs_dir):
     file_path = inputs_dir.joinpath("day5_input_example.txt")
     table, instructions = convert_to_table_and_instructions(file_path)
-    assert table == ["    [D]    \n", "[N] [C]    \n", "[Z] [M] [P]\n", " 1   2   3 \n"]
+    assert table == ["    [D]\n", "[N] [C]\n", "[Z] [M] [P]\n", " 1   2   3\n"]
     assert list(instructions) == [
         "move 1 from 2 to 1\n",
         "move 3 from 1 to 3\n",
