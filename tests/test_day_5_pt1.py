@@ -14,7 +14,7 @@ from src.day5_pt1 import (
 def test_convert_to_table_and_instructions(inputs_dir):
     file_path = inputs_dir.joinpath("day5_input_example.txt")
     table, instructions = convert_to_table_and_instructions(file_path)
-    assert table == ["    [D]    ", "[N] [C]    ", "[Z] [M] [P]", " 1   2   3 "]
+    assert table == ["    [D]", "[N] [C]", "[Z] [M] [P]", " 1   2   3"]
     assert instructions == [
         "move 1 from 2 to 1",
         "move 3 from 1 to 3",
@@ -27,7 +27,7 @@ def test_convert_table_to_array():
     table_input = ("    [D]    ", "[N] [C]    ", "[Z] [M] [P]", " 1   2   3 ")
     table = convert_table_to_array(table_input)
 
-    assert [list(r.queue) for r in table] == (("Z", "N"), ("M", "C", "D"), ("P",))
+    assert [list(r.queue) for r in table] == [["Z", "N"], ["M", "C", "D"], ["P"]]
 
 
 def test_convert_instruction_str_to_int():
